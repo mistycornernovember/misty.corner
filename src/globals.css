@@ -140,8 +140,8 @@ a:not(.nav-item):not(.logo-link):not(.cta-button)::after {
   display: none;
 }
 
-/* Keep original style for Nav Items and Logo if they use the ::after underline */
-.nav-item::after, .logo-link::after {
+/* Keep original style for Nav Items if they use the ::after underline */
+.nav-item::after {
   content: '';
   position: absolute;
   width: 0;
@@ -152,6 +152,6 @@ a:not(.nav-item):not(.logo-link):not(.cta-button)::after {
   transition: width 0.3s;
 }
 
-.nav-item:hover::after, .logo-link:hover::after {
+.nav-item:hover::after {
   width: 100%;
 }
