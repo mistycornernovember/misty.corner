@@ -51,14 +51,10 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               src="/images/logo.png" 
               alt="製霧所 Logo" 
               style={{ 
-                height: '135px', 
+                height: '70px', 
                 width: 'auto', 
                 objectFit: 'contain', 
                 display: logoLoaded ? 'block' : 'none',
-                position: 'absolute',
-                top: '50%',
-                left: 0,
-                transform: 'translateY(-50%)',
                 zIndex: 1001
               }} 
               onLoad={() => setLogoLoaded(true)}
@@ -371,7 +367,7 @@ const featureCardImage: React.CSSProperties = { width: '100%', height: '420px', 
 const featureCardContent: React.CSSProperties = { display: 'flex', flexDirection: 'column', gap: '1.5rem' };
 const featureCardTitle: React.CSSProperties = { fontSize: '1.8rem', fontWeight: 600, lineHeight: '1.4' };
 const featureCardExcerpt: React.CSSProperties = { fontSize: '1rem', lineHeight: '1.9', color: '#555' };
-const readMoreLinkStyle: React.CSSProperties = { fontSize: '0.75rem', letterSpacing: '0.2rem', color: 'var(--text-color)', textDecoration: 'none', fontWeight: 600, borderBottom: '1.5px solid #ddd', width: 'fit-content', paddingBottom: '5px' };
+const readMoreLinkStyle: React.CSSProperties = { fontSize: '0.75rem', letterSpacing: '0.2rem', color: 'var(--text-color)', textDecoration: 'none', fontWeight: 600, borderBottom: '1.5px solid #ddd', width: 'fit-content', paddingBottom: '5px', };
 const articlePageStyle: React.CSSProperties = { minHeight: '100vh', background: '#fff', position: 'relative', zIndex: 10 };
 const backButtonStyle: React.CSSProperties = { position: 'fixed', top: '6.5rem', left: '5%', zIndex: 100, background: 'rgba(255,255,255,0.8)', backdropFilter: 'blur(5px)', border: '1px solid #eee', padding: '0.8rem 1.5rem', fontSize: '0.7rem', letterSpacing: '0.2rem', cursor: 'pointer' };
 const articleHeroImage: React.CSSProperties = { width: '100%', height: '85vh', backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative' };
