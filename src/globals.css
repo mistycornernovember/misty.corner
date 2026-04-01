@@ -1,0 +1,157 @@
+:root {
+  --bg-color: #fcfbf7;
+  --text-color: #1a1a1a;
+  --accent-color: #6d6d6d;
+  --brand-white: rgba(255, 255, 255, 0.6); /* 白色霧氣（半透明） */
+  --mist-color: rgba(255, 255, 255, 0.4);
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Montserrat', sans-serif;
+  --noise-opacity: 0.05;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Accessibility: Remove default focus outline but keep for keyboard users */
+a:focus, button:focus {
+  outline: none;
+}
+
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--text-color);
+  outline-offset: 4px;
+}
+
+/* Noise Texture Overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: var(--noise-opacity);
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Ffilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Mist Layers */
+.mist-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(circle at 50% 50%, var(--mist-color), transparent 70%);
+  animation: mistFlow 20s infinite alternate ease-in-out;
+}
+
+@keyframes mistFlow {
+  0% { transform: scale(1) translate(0, 0); }
+  50% { transform: scale(1.2) translate(5%, 5%); }
+  100% { transform: scale(1.1) translate(-2%, 2%); }
+}
+
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+p {
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+  transition: opacity 0.3s;
+  display: inline-block; /* Ensure pseudo-elements align correctly */
+}
+
+/* Default Link Hover Effect: Misty Fill */
+/* Exclude nav items, logo, and special CTA buttons */
+a:not(.nav-item):not(.logo-link):not(.cta-button)::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 120%;
+  background-color: var(--brand-white);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+  z-index: -1;
+  opacity: 0;
+  filter: blur(8px);
+}
+
+a:not(.nav-item):not(.logo-link):not(.cta-button):hover::before {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+/* CTA Button Specific Hover (Bottom-to-Top Mist) */
+.cta-button {
+  overflow: hidden;
+  z-index: 1;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.05));
+  transition: height 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  z-index: -1;
+  filter: blur(4px);
+}
+
+.cta-button:hover::before {
+  height: 100%;
+}
+
+.cta-button:hover {
+  border-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Remove the old bottom line for general links */
+a:not(.nav-item):not(.logo-link):not(.cta-button)::after {
+  display: none;
+}
+
+/* Keep original style for Nav Items and Logo if they use the ::after underline */
+.nav-item::after, .logo-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--text-color);
+  transition: width 0.3s;
+}
+
+.nav-item:hover::after, .logo-link:hover::after {
+  width: 100%;
+}
