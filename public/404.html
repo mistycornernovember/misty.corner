@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting...</title>
+    <script>
+      (function () {
+        var pathSegmentsToKeep = 1;
+        var location = window.location;
+        var basePath = location.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/');
+        var routePath = location.pathname.slice(basePath.length) + location.search + location.hash;
+        sessionStorage.setItem('spa-redirect', basePath + '/' + (routePath.charAt(0) === '/' ? routePath.slice(1) : routePath));
+        location.replace(basePath + '/');
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Link, useLocation, useParams, u
 import { motion, AnimatePresence } from 'framer-motion';
 import { ISSUES_DATA, FEATURES_DATA, NEWS_DATA, CONTRIBUTION_RULES } from './data';
 
+const assetPath = (path: string) => `${import.meta.env.BASE_URL}${path}`;
+
 // --- Visual Components ---
 
 const MistyShape = ({ color = '#d1d1d1', delay = 0, size = '300px' }: { color?: string; delay?: number; size?: string }) => (
@@ -48,7 +50,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         <Link to="/" className="logo-link" style={logoLinkStyle} aria-label="製霧所首頁">
           <div style={{ position: 'relative', width: '135px', height: '45px', display: 'flex', alignItems: 'center' }}>
             <img 
-              src="/images/logo.png" 
+              src={assetPath('images/logo.png')}
               alt="製霧所 Logo" 
               style={{ 
                 height: '70px', 
@@ -371,7 +373,7 @@ const Features = () => {
 
 export default function App() {
   return (
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -398,7 +400,7 @@ const mobileMenuLinksStyle: React.CSSProperties = { display: 'flex', flexDirecti
 const mainStyle: React.CSSProperties = { width: '100%' };
 const innerContainer: React.CSSProperties = { maxWidth: '1200px', margin: '0 auto', padding: '0 5%' };
 const pagePadding: React.CSSProperties = { paddingBottom: '10rem' };
-const fullHeroStyle: React.CSSProperties = { height: '100vh', width: '100%', position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', backgroundImage: 'url("/images/home-bg.jpg")', backgroundSize: 'cover', backgroundPosition: 'center', color: 'white' };
+const fullHeroStyle: React.CSSProperties = { height: '100vh', width: '100%', position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', backgroundImage: `url("${assetPath('images/home-bg.jpg')}")`, backgroundSize: 'cover', backgroundPosition: 'center', color: 'white' };
 const heroBackgroundOverlay: React.CSSProperties = { position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'rgba(0,0,0,0.35)', backdropFilter: 'blur(1px)' };
 const heroContentContainer: React.CSSProperties = { position: 'relative', zIndex: 2 };
 const heroBigTitleStyle: React.CSSProperties = { fontSize: 'clamp(4rem, 15vw, 10rem)', letterSpacing: '1.5rem', marginBottom: '2rem', fontWeight: 400, textShadow: '0 10px 30px rgba(0,0,0,0.25)' };
