@@ -233,8 +233,15 @@ const Issues = () => (
     <div style={{paddingTop: '8rem'}}>
       <h2 style={sectionTitleStyle}>刊物 / ISSUES</h2>
       <div className="issues-grid">
-        {ISSUES_DATA.map(issue => (
-          <article key={issue.id} style={issueCardStyle}>
+        {ISSUES_DATA.map((issue, idx) => (
+          <motion.article
+            key={issue.id}
+            style={issueCardStyle}
+            initial={{ opacity: 0, y: 48 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.55, delay: Math.min(idx * 0.08, 0.32), ease: 'easeOut' }}
+          >
             <div style={{...issueImageContainer, backgroundImage: `url("${issue.image}")`}}>
               <div style={imageOverlay} />
             </div>
@@ -247,7 +254,7 @@ const Issues = () => (
                 ))}
               </div>
             </div>
-          </article>
+          </motion.article>
         ))}
       </div>
     </div>
@@ -295,18 +302,51 @@ const Features = () => {
         <div style={featureGridStyle}>
           {FEATURES_DATA.map(f => (
             <article key={f.id} style={featureCardStyle}>
-              <div style={{...featureCardImage, backgroundImage: `url("${f.image}")`}}>
-                <div style={imageOverlay} />
-              </div>
+              <Link
+                to={`/features/${f.id}`}
+                className="feature-entry-link feature-entry-image"
+                aria-label={`閱讀 ${f.title}`}
+                style={{ display: 'block', cursor: 'pointer' }}
+              >
+                <div style={{...featureCardImage, backgroundImage: `url("${f.image}")`}}>
+                  <div style={imageOverlay} />
+                </div>
+              </Link>
               <div style={featureCardContent}>
-                <h3 style={featureCardTitle}>{f.title}</h3>
-                <p style={featureCardExcerpt}>{f.excerpt}</p>
-                <Link to={`/features/${f.id}`} style={readMoreLinkStyle}>READ FULL ARTICLE →</Link>
+                <Link
+                  to={`/features/${f.id}`}
+                  className="feature-entry-link feature-entry-title"
+                  style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer', width: 'fit-content' }}
+                >
+                  <h3 style={featureCardTitle}>{f.title}</h3>
+                </Link>
+                <Link
+                  to={`/features/${f.id}`}
+                  className="feature-entry-link feature-entry-excerpt"
+                  style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}
+                >
+                  <p style={featureCardExcerpt}>{f.excerpt}</p>
+                </Link>
+                <Link
+                  to={`/features/${f.id}`}
+                  className="feature-entry-link feature-entry-readmore"
+                  style={{ ...readMoreLinkStyle, cursor: 'pointer' }}
+                >
+                  READ FULL ARTICLE →
+                </Link>
               </div>
             </article>
           ))}
         </div>
       </div>
+      <style>{`
+        .feature-entry-link {
+          transition: opacity 0.28s ease;
+        }
+        .feature-entry-link:hover {
+          opacity: 0.6;
+        }
+      `}</style>
     </div>
   );
 };
