@@ -14,12 +14,20 @@ export interface InterviewBlock {
   a: string;
 }
 
+export interface FeatureLink {
+  label: string;
+  url: string;
+}
+
 export interface Feature {
   id: string;
   title: string;
+  interviewee: string;
   excerpt: string;
   image: string;
-  preface?: string; 
+  preface?: string;
+  linksTitle?: string;
+  links?: FeatureLink[];
   content: InterviewBlock[];
 }
 
@@ -203,9 +211,15 @@ export const FEATURES_DATA: Feature[] = [
   {
     id: 'aiki',
     title: '訪談 - 艾琪',
+    interviewee: '艾琪',
     excerpt: '幸虧台灣延緩了疫情的衝擊，2020 年 8 月無預警在住處辦了個趴，14 坪空間說大不大，扣除臥室和浴室同時進場人次達到二十好幾，對於空間利用很有一套似的。那天是我第一次遇見艾琪，雖然照慣例把自己灌醉，但是印象深刻艾琪的先生說了一句：「我太太是個文人。」也許就這麼一句，給了我日後向艾琪邀稿的勇氣，從第一本刊物《製霧所001：朋朋的心事》開始，艾琪便穩定向製霧所供稿，替刊物帶來生猛的活水，近期得知艾琪在寫作的道路上跨出了一大步，替她感到開心之餘，也想透過訪談聊聊她一路走來的心路歷程，對於寫作的思考。',
     image: '/images/feature-003.jpg',
     preface: '幸虧台灣延緩了疫情的衝擊，2020 年 8 月無預警在住處辦了個趴，14 坪空間說大不大，扣除臥室和浴室同時進場人次達到二十好幾，對於空間利用很有一套似的。那天是我第一次遇見艾琪，雖然照慣例把自己灌醉，但是印象深刻艾琪的先生說了一句：「我太太是個文人。」也許就這麼一句，給了我日後向艾琪邀稿的勇氣，從第一本刊物《製霧所001：朋朋的心事》開始，艾琪便穩定向製霧所供稿，替刊物帶來生猛的活水，近期得知艾琪在寫作的道路上跨出了一大步，替她感到開心之餘，也想透過訪談聊聊她一路走來的心路歷程，對於寫作的思考。',
+    linksTitle: '追蹤艾琪的網路足跡：',
+    links: [
+      { label: 'Facebook', url: 'https://www.facebook.com/amekiabe' },
+      { label: 'Medium', url: 'https://medium.com/@eatbooks' },
+    ],
     content: [
       { q: '從什麼時候開始寫？', a: '我從國小時就很愛寫，很愛去借書來看。' },
       { q: '國小就在看伊藤潤二？', a: '對，我快被嚇個半死，回家躺在床上看到窗戶都覺得有蝸牛，好恐怖喔，都覺得自己會被捲到下水道裡面。國小會寫日記，還會在旁邊畫插圖、畫漫畫，但是漫畫不知為何越畫越醜，後來就沒在畫。' },
@@ -260,9 +274,14 @@ export const FEATURES_DATA: Feature[] = [
   {
     id: 'moon-reader',
     title: '訪談 - 馬力姊',
+    interviewee: '馬力姊',
     excerpt: '月讀書咖 MR Book Cafe 是一間開在竹北的獨立書店，從 2016 年開業，一直到 2022 年結束營業。\n書店結束後，臉書粉絲專頁轉型成「月讀聚樂部」，積極和出版社合作，進行書籍的推廣。\n本期製霧所超級榮幸邀請到店主馬力姊進行訪談，聊聊她的求學階段，經營書店的心路歷程，以及書店結束後的新發現。',
     image: '/images/feature-002.png',
     preface: `月讀書咖 MR Book Cafe 是一間開在竹北的獨立書店，從 2016 年開業，一直到 2022 年結束營業。\n書店結束後，臉書粉絲專頁轉型成「月讀聚樂部」，積極和出版社合作，進行書籍的推廣。\n本期製霧所超級榮幸邀請到店主馬力姊進行訪談，聊聊她的求學階段，經營書店的心路歷程，以及書店結束後的新發現。`,
+    linksTitle: '月讀聚樂部臉書粉絲專頁：',
+    links: [
+      { label: 'Facebook', url: 'https://www.facebook.com/MuMoonReader' },
+    ],
     content: [
       { q: '大學是唸什麼科系？', a: '我那年進入成大台文系第一屆，當時台灣政治正在經歷本土化的階段，所以對於台灣文學系，大家都很期待要怎麼去訓練一群年輕人認識台灣。' },
       { q: '畢業之後呢？', a: '畢業之後進了一間廣告公司，專門做政府標案。那份工作認識很多有趣的人。想離開是因為覺得自己沒有繼續成長。' },
@@ -301,6 +320,7 @@ export const FEATURES_DATA: Feature[] = [
   {
     id: 'lian',
     title: '訪談 - Lian',
+    interviewee: 'Lian',
     excerpt: '在 2021 年的牯嶺街書香市集上認識 Lian，那時她和友人一起在攤位前駐足，和攤主們聊了許多，後來陸續參與了兩期（004 與 005）的邀稿，想藉 006 的機會更深入了解 Lian，以及她對於製霧所的任何想法。',
     image: '/images/feature-001.jpg',
     preface: `在 2021 年的牯嶺街書香市集上認識 Lian，那時她和友人一起在攤位前駐足，和攤主們聊了許多，後來陸續參與了兩期（004 與 005）的邀稿，想藉 006 的機會更深入了解 Lian，以及她對於製霧所的任何想法。`,

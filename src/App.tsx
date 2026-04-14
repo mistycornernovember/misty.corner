@@ -286,10 +286,28 @@ const Features = () => {
             {feature.content.map((block, idx) => (
               <div key={idx} style={interviewTurnStyle}>
                 <p><strong>製：</strong>{block.q}</p>
-                <p><strong>對方：</strong>{block.a}</p>
+                <p><strong>{feature.interviewee}：</strong>{block.a}</p>
               </div>
             ))}
           </div>
+          {feature.links?.length ? (
+            <div style={articleLinksSectionStyle}>
+              <h2 style={articleLinksTitleStyle}>{feature.linksTitle ?? `${feature.interviewee} 的網路連結`}</h2>
+              <div style={articleLinksListStyle}>
+                {feature.links.map((link) => (
+                  <a
+                    key={link.url}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={articleLinkStyle}
+                  >
+                    {link.label}：{link.url}
+                  </a>
+                ))}
+              </div>
+            </div>
+          ) : null}
         </div>
       </div>
     );
@@ -406,7 +424,16 @@ const featureCardStyle: React.CSSProperties = { display: 'flex', flexDirection: 
 const featureCardImage: React.CSSProperties = { width: '100%', height: '420px', backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative', backgroundColor: '#ccc' };
 const featureCardContent: React.CSSProperties = { display: 'flex', flexDirection: 'column', gap: '1.5rem' };
 const featureCardTitle: React.CSSProperties = { fontSize: '1.8rem', fontWeight: 600, lineHeight: '1.4' };
-const featureCardExcerpt: React.CSSProperties = { fontSize: '1rem', lineHeight: '1.9', color: '#333' };
+const featureCardExcerpt: React.CSSProperties = {
+  fontSize: '1rem',
+  lineHeight: '1.9',
+  color: '#333',
+  display: '-webkit-box',
+  WebkitLineClamp: 3,
+  WebkitBoxOrient: 'vertical',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+};
 const readMoreLinkStyle: React.CSSProperties = { fontSize: '0.75rem', letterSpacing: '0.2rem', color: 'var(--text-color)', textDecoration: 'none', fontWeight: 600, borderBottom: '1.5px solid #bbb', width: 'fit-content', paddingBottom: '5px', };
 const articlePageStyle: React.CSSProperties = { minHeight: '100vh', background: '#fff', position: 'relative', zIndex: 10 };
 const backButtonStyle: React.CSSProperties = { position: 'fixed', top: '6.5rem', left: '5%', zIndex: 100, background: 'rgba(255,255,255,0.8)', backdropFilter: 'blur(5px)', border: '1px solid #ccc', padding: '0.8rem 1.5rem', fontSize: '0.7rem', letterSpacing: '0.2rem', cursor: 'pointer' };
@@ -416,5 +443,9 @@ const articleTitleStyle: React.CSSProperties = { fontSize: 'clamp(2.5rem, 5vw, 4
 const prefaceStyle: React.CSSProperties = { fontSize: '1.1rem', lineHeight: '2.2', color: '#444', marginBottom: '6rem', fontStyle: 'italic', borderLeft: '3px solid #ccc', paddingLeft: '2rem' };
 const interviewFlowStyle: React.CSSProperties = { display: 'flex', flexDirection: 'column', gap: '4.5rem' };
 const interviewTurnStyle: React.CSSProperties = { display: 'flex', flexDirection: 'column', gap: '2.2rem', fontSize: '1.2rem', lineHeight: '2.4', color: '#000' };
+const articleLinksSectionStyle: React.CSSProperties = { marginTop: '8rem', paddingTop: '3rem', borderTop: '1px solid #ccc' };
+const articleLinksTitleStyle: React.CSSProperties = { fontSize: '1.4rem', marginBottom: '1.5rem', fontWeight: 600 };
+const articleLinksListStyle: React.CSSProperties = { display: 'flex', flexDirection: 'column', gap: '1rem' };
+const articleLinkStyle: React.CSSProperties = { color: 'var(--text-color)', textDecoration: 'none', borderBottom: '1px solid #bbb', width: 'fit-content', lineHeight: '1.9' };
 const footerStyle: React.CSSProperties = { padding: '8rem 0', borderTop: '1px solid #ccc', textAlign: 'center', fontSize: '0.75rem', letterSpacing: '0.2rem', color: '#888' };
 const mistLayerStyle: React.CSSProperties = { position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 1 };
