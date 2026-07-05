@@ -230,6 +230,12 @@ const StockistCard = ({ name, link }: { name: string; link: string }) => (
   </a>
 );
 
+const renderLineBreaks = (text: string) => (
+  text.split('\n').map((line, i) => (
+    <React.Fragment key={i}>{line}<br /></React.Fragment>
+  ))
+);
+
 const Issues = () => (
   <div style={innerContainer}>
     <div style={{paddingTop: '8rem'}}>
@@ -251,9 +257,7 @@ const Issues = () => (
               <h3 style={itemTitleStyle}>製霧所 第{issue.number}期「{issue.title}」</h3>
               <span style={dateStyle}>{issue.date} 發行</span>
               <div style={issueContentClassic}>
-                {issue.description.split('\n').map((line, i) => (
-                  <React.Fragment key={i}>{line}<br /></React.Fragment>
-                ))}
+                {renderLineBreaks(issue.description)}
               </div>
             </div>
           </motion.article>
@@ -287,8 +291,8 @@ const Features = () => {
           <div style={interviewFlowStyle}>
             {feature.content.map((block, idx) => (
               <div key={idx} style={interviewTurnStyle}>
-                <p><strong>製：</strong>{block.q}</p>
-                <p><strong>{feature.interviewee}：</strong>{block.a}</p>
+                <p style={interviewParagraphStyle}><strong>製：</strong>{renderLineBreaks(block.q)}</p>
+                <p style={interviewParagraphStyle}><strong>{feature.interviewee}：</strong>{renderLineBreaks(block.a)}</p>
               </div>
             ))}
           </div>
@@ -444,7 +448,8 @@ const articleBodyContainer: React.CSSProperties = { maxWidth: '850px', margin: '
 const articleTitleStyle: React.CSSProperties = { fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', lineHeight: '1.2', marginBottom: '6rem', textAlign: 'center' };
 const prefaceStyle: React.CSSProperties = { fontSize: '1.1rem', lineHeight: '2.2', color: '#444', marginBottom: '6rem', fontStyle: 'italic', borderLeft: '3px solid #ccc', paddingLeft: '2rem' };
 const interviewFlowStyle: React.CSSProperties = { display: 'flex', flexDirection: 'column', gap: '4.5rem' };
-const interviewTurnStyle: React.CSSProperties = { display: 'flex', flexDirection: 'column', gap: '2.2rem', fontSize: '1.2rem', lineHeight: '2.4', color: '#000' };
+const interviewTurnStyle: React.CSSProperties = { display: 'flex', flexDirection: 'column', gap: '0.8rem', fontSize: '1.2rem', lineHeight: '2.4', color: '#000' };
+const interviewParagraphStyle: React.CSSProperties = { margin: 0 };
 const articleLinksSectionStyle: React.CSSProperties = { marginTop: '8rem', paddingTop: '3rem', borderTop: '1px solid #ccc' };
 const articleLinksTitleStyle: React.CSSProperties = { fontSize: '1.4rem', marginBottom: '1.5rem', fontWeight: 600 };
 const articleLinksListStyle: React.CSSProperties = { display: 'flex', flexDirection: 'column', gap: '1rem' };
