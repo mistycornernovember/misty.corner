@@ -250,7 +250,7 @@ const Issues = () => (
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.55, delay: Math.min(idx * 0.08, 0.32), ease: 'easeOut' }}
           >
-            <div style={{...issueImageContainer, backgroundImage: `url("${issue.image}")`}}>
+            <div style={{...issueImageContainer, ...(issue.image ? { backgroundImage: `url("${issue.image}")` } : {})}}>
               <div style={imageOverlay} />
             </div>
             <div style={{padding: '2rem 0'}}>
