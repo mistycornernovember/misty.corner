@@ -206,14 +206,10 @@ export const CONTRIBUTION_RULES = `散文：字數上限 3000 字，下限 300 �
 
 export const NEWS_DATA = [
   {
-    title: '徵稿中：《製霧所 020：遺毒考》',
-    content: '當我試圖尋找適切的字句捕捉當下困窘沮喪，那字句拿刀架在我的脖子上大吼，逼迫我繼續尋找適合那把刀、脖子、之間距離的描述，我下定決心前往深處翻攪，時序卻開始反覆跳躍，事件的前因後果不規則剪接，受害者終於和加害者糊成一張臉。關於意識和身體記憶裡遺毒的歷史過了這麼多年無人觸碰，每天醒來醫師研判那是一顆良性腫瘤，暫時沒有威脅，就這麼相看兩不厭一生，未嘗不是一種幸福，嗎？\n本期製霧所邀請各位朋朋拿起手術刀，往自身或周圍的腫瘤畫個幾刀，會噴出什麼汁液，惡化或是痊癒，都值得記下一筆。',
-    deadline: '10/24（六）23:59',
-    showRules: true, // 是否顯示固定規範
-    links: [
-      { label: 'E-mail: misty.corner.november@gmail.com', url: 'mailto:misty.corner.november@gmail.com' },
-      { label: 'Facebook: 製霧所 Misty Corner', url: 'https://www.facebook.com/misty.corner.november' }
-    ]
+    title: '製霧所五週年回顧展',
+    links: [{label: '展覽介紹', url: 'https://www.facebook.com/share/p/1DohJJdeg6/'}],
+    content:'地點：赤峰浪島（台北市大同區赤峰街71巷2號） \n 時間： 2026 / 11  –  2026 / 12',
+    showRules: false
   },
   {
     title: '即將出攤',
