@@ -203,7 +203,10 @@ const Home = () => (
       <section style={sectionGap} aria-labelledby="about-title">
         <h2 id="about-title" style={sectionTitleStyle}>組織介紹 / ABOUT</h2>
         <p style={{...newsTextStyle, maxWidth: '700px', lineHeight: '2.2'}}>
-          2021 由酒精和創作組成，成員都會發酵。不定期出沒於市集、公園，還有熱炒店。我們致力於捕捉生活中的朦朧，將那些細碎、發酵後的思緒化作實體刊物與讀者連結。
+          製霧所 2021 由酒精和創作組成，成員都會發酵。 <br />
+          不定期出沒於市集、公園，還有熱炒店。 <br />
+          霧雖然沒有什麼實際的功能，但是遠看卻有點浪漫，這樣對功利目的毫無作用的正式我們想要製造的風景。
+
         </p>
         <div style={{marginTop: '2rem', display: 'flex', gap: '2rem'}}>
           <a href="https://www.facebook.com/misty.corner.november" target="_blank" rel="noopener noreferrer" style={textLinkStyle}>[ FACEBOOK ]</a>

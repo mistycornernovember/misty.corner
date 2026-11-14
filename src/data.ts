@@ -209,7 +209,8 @@ export const NEWS_DATA = [
     title: '製霧所五週年回顧展',
     links: [{label: '展覽介紹', url: 'https://www.facebook.com/share/p/1DohJJdeg6/'}],
     content:'地點：赤峰浪島（台北市大同區赤峰街71巷2號） \n 時間： 2026 / 11  –  2026 / 12',
-    showRules: false
+    showRules: false,
+    deadline: ''
   },
   {
     title: '即將出攤',
